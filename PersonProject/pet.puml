@@ -1,0 +1,69 @@
+@startuml
+class com.revature.entity.Pet {
+- int id
+- String name
+- String species
+- String food
++ int getId()
++ void setId(int)
++ String getName()
++ void setName(String)
++ String getSpecies()
++ void setSpecies(String)
++ String getFood()
++ void setFood(String)
++ String toString()
+}
+class com.revature.controller.PetCommandLineInterface {
++ {static} void menu()
++ {static} void printOptions()
+}
+interface com.revature.data.PetDao {
++ Pet insert(Pet)
++ Pet getById(int)
++ List<Pet> getAllPets()
++ Pet update(Pet)
++ boolean delete(int)
+}
+class com.revature.App {
++ {static} void main(String[])
+}
+class com.revature.service.PetService {
++ Pet insert(Pet)
++ Pet getById(int)
++ List<Pet> getAllPets()
++ Pet updatePet(Pet)
++ boolean deletePet(int)
+}
+class com.revature.data.PetDaoTempImpl {
++ Pet insert(Pet)
++ Pet getById(int)
++ List<Pet> getAllPets()
++ Pet update(Pet)
++ boolean delete(int)
+}
+class com.revature.data.ConnectionFactory {
+- {static} Connection connection
+~ {static} Connection getConnection()
+}
+class com.revature.controller.PetController {
+}
+class com.revature.data.PetDaoImpl {
+~ Connection connection
++ Pet insert(Pet)
++ Pet getById(int)
++ List<Pet> getAllPets()
++ Pet update(Pet)
++ boolean delete(int)
+}
+class com.revature.exception.PetException {
+}
+class com.revature.data.DaoFactory {
+- {static} PetDao petDao
++ {static} PetDao getPetDao()
+}
+
+
+com.revature.data.PetDao <|.. com.revature.data.PetDaoTempImpl
+com.revature.data.PetDao <|.. com.revature.data.PetDaoImpl
+@enduml
